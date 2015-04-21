@@ -23,7 +23,6 @@ namespace Hs_Arena_Tracker
         public MainWindow()
         {
             InitializeComponent();
-            //Test3
         }
     }
 }
