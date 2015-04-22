@@ -27,15 +27,36 @@ namespace Hs_Arena_Tracker
         {
             InitializeComponent();
             LoadJson();
+            //OtherLoadJson();
             Console.WriteLine("Done");
         }
 
         public void LoadJson()
         {
-            using (StreamReader r = new StreamReader("AllSets.json"))
+            string path = System.AppDomain.CurrentDomain.BaseDirectory + "AllSets.json";
+
+            using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();
-                List<HearthstoneObject> hsObjects = JsonConvert.DeserializeObject<List<HearthstoneObject>>(json);
+                List<object> hsObjects = JsonConvert.DeserializeObject<List<object>>(json);
+            }
+        }
+
+        public void OtherLoadJson()
+        {
+            string current;
+            string path = System.AppDomain.CurrentDomain.BaseDirectory + "AllSets.json";
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] card = line.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+                    while (sr.Peek() > 0)
+                    {
+                        HearthstoneObject c = new HearthstoneObject();
+                    }
+                }
             }
         }
     }
